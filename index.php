@@ -7,9 +7,11 @@
     }
 
     #logo {
+	/*
         position: relative;
         height: 100%;
-        mix-blend-mode: screen;
+	mix-blend-mode: screen;
+	*/
         /* opacity: 0.75; */
         z-index: 1000;
     }
@@ -20,14 +22,25 @@
         left: 50%;
         transform: translate(-50%, -50%);
         mix-blend-mode: screen;
+	width: 50%;
         opacity: 1.0;
     }
 
-    #logo-r, 
+    #logo-r,
     #logo-g,
-    #logo-b,
+    #logo-b {
         display: block;
     }
+
+    #logo-w {
+	display: none;
+	}
+
+	#start {
+		width: 100px;
+		height: 200px;
+		background-color: #FF0;
+	}
 
     /* prob dont need this
     #logo-w {
@@ -45,12 +58,13 @@
 </style>
 </head>
 <body>
-    <div id="logo">    
-        hello, world.
-        <div id="logo-r"><img class="r" src="/media/svg/ica-r.svg"></div>
-        <div id="logo-g"><img class="g" src="/media/svg/ica-g.svg"></div>
-        <div id="logo-b"><img class="b" src="/media/svg/ica-b.svg"></div>
-        <div id="logo-w"><img class="w" src="/media/svg/ica-w.svg"></div>
+    <div id="logo">
+        <button id="start" style="height:50px;" onclick="getAccel()">Start</button>
+
+        <div id="logo-r"><img class="r" src="block-r.svg"></div>
+        <div id="logo-g"><img class="g" src="block-g.svg"></div>
+        <div id="logo-b"><img class="b" src="block-b.svg"></div>
+        <div id="logo-w"><img class="w" src="block-w.svg"></div>
     </div>
     <script src='block.js'></script>
 </body>

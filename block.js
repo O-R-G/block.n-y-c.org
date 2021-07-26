@@ -14,12 +14,22 @@ var alpha, beta, gamma;     // gyrscope x, y, z (z is like y on iphone, points s
 
 // ** todo ** add request device orientation
 
+
+// see https://kongmunist.medium.com/accessing-the-iphone-accelerometer-with-javascript-in-ios-14-and-13-e146d18bb175
+
+function getAccel(){
+    DeviceMotionEvent.requestPermission().then(response => {
+        if (response == 'granted') {
+            console.log("accelerometer permission granted");
 // window.addEventListener("deviceorientation", blur, false);
 // window.addEventListener("deviceorientation", shift_y, false);
-// window.addEventListener("deviceorientation", shift_x, false);
+window.addEventListener("deviceorientation", shift_x, false);
 // window.addEventListener("deviceorientation", shift_z, false);
 // window.addEventListener("deviceorientation", shift, false);
-window.addEventListener("click", hello_world, false);
+// window.addEventListener("click", hello_world, false);
+        }
+    });
+}
 
 function blur(e) {
     var gain = 5.0;
