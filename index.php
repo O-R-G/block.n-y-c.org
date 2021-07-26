@@ -3,7 +3,7 @@
 <head>
 <style>
     body {
-        background-color: #CCC;
+        background-color: #000;
     }
 
     #logo {
@@ -22,7 +22,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         mix-blend-mode: screen;
-	width: 50%;
+	width: 80%;
         opacity: 1.0;
     }
 
@@ -39,7 +39,7 @@
 	#start {
 		width: 100px;
 		height: 200px;
-		background-color: #FF0;
+		background-color: transparent;
 	}
 
     /* prob dont need this
