@@ -87,6 +87,8 @@ function shift_x_y(e) {
     logo_r.style.top = beta_r * gain + "%";
     logo_g.style.top = beta_g * gain + "%";
     logo_b.style.top = beta_b * gain + "%";
+
+    blur(e);
     // debug();
 }
 
