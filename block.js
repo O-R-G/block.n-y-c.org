@@ -17,19 +17,17 @@ var alpha, beta, gamma;     // gyrscope x, y, z (z is like y on iphone, points s
 
 // see https://kongmunist.medium.com/accessing-the-iphone-accelerometer-with-javascript-in-ios-14-and-13-e146d18bb175
 
-function getAccel(){
+function request_accelerometer(){
     DeviceMotionEvent.requestPermission().then(response => {
         if (response == 'granted') {
             console.log("accelerometer permission granted");
-	// window.addEventListener("deviceorientation", blur, false);
-	// window.addEventListener("deviceorientation", shift_y, false);
-	// window.addEventListener("deviceorientation", shift_x, false);
-	window.addEventListener("deviceorientation", shift_x_y, false);
-	// window.addEventListener("deviceorientation", shift_z, false);
-	// window.addEventListener("deviceorientation", shift, false);
-	// window.addEventListener("click", hello_world, false);
+        	window.addEventListener("deviceorientation", shift_x_y, false);
         }
     });
+}
+
+function request_mouse(){        	
+    window.addEventListener("mousemove", shift_x_y_mouse, false);
 }
 
 function blur(e) {
@@ -72,8 +70,8 @@ function shift_y(e) {
 
 function shift_x_y(e) {
     var gain = 5.0;
-    gamma = 0 - e.gamma * gain;
     beta = 0 - e.beta * gain;
+    gamma = 0 - e.gamma * gain;
     var gain = 1.5;
     beta_r = maptorange(Math.abs(beta), 0, 360, 30, 60);
     beta_g = maptorange(Math.abs(beta), 0, 360, 30, -10);
@@ -89,6 +87,27 @@ function shift_x_y(e) {
     logo_b.style.top = beta_b * gain + "%";
 
     blur(e);
+    // debug();
+}
+
+function shift_x_y_mouse(e) {
+    var gain = 1.0;
+    gamma = 0 - e.clientX * gain;
+    beta = 0 - e.clientY * gain;
+    var gain = 1.5;
+    beta_r = maptorange(Math.abs(beta), 0, 360, 30, 60);
+    beta_g = maptorange(Math.abs(beta), 0, 360, 30, -10);
+    beta_b = maptorange(Math.abs(beta), 0, 360, 30, 100);
+    gamma_r = maptorange(Math.abs(gamma), 0, 360, 30, 60);
+    gamma_g = maptorange(Math.abs(gamma), 0, 360, 30, -10);
+    gamma_b = maptorange(Math.abs(gamma), 0, 360, 30, 100);
+    logo_r.style.left = gamma_r * gain + "%";
+    logo_g.style.left = gamma_g * gain + "%";
+    logo_b.style.left = gamma_b * gain + "%";
+    logo_r.style.top = beta_r * gain + "%";
+    logo_g.style.top = beta_g * gain + "%";
+    logo_b.style.top = beta_b * gain + "%";
+
     // debug();
 }
 
